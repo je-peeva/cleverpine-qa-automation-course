@@ -1,4 +1,5 @@
 import { displayEnvironmentInfo } from "./task01/verify-setup.js";
+import { loadEnvironmentConfig } from "./task02/environment-config.js";
 import {
   testUserEmail,
   testUserPassword,
@@ -17,59 +18,54 @@ import {
   logSystemInfo,
 } from "./task03/test-execution-helpers.js";
 
-//Runs a complete foundation demo that displays environment info, validates inputs, executes a test suite with steps and results, and logs debugging and system details
+// This script demonstrates a full foundation-level test workflow.
+// It includes environment verification, test data setup and validation,
+// and a simulated login test suite using helper functions from previous tasks.
+
 function runFoundationDemo() {
+  console.log("===== RUNNING FOUNDATION DEMO =====");
+
   displayEnvironmentInfo();
-  validateEmail(testUserEmail);
-  validatePassword(testUserPassword);
-  generateUniqueEmail("jeTest");
+  loadEnvironmentConfig();
   logTestConfiguration();
 
-  let suiteName = "je test suite";
-  let startSuiteTime = startTestSuite(suiteName);
+  validateEmail(testUserEmail);
+  validatePassword(testUserPassword);
 
-  startTestSuite(suiteName);
-  endTestSuite(suiteName, startSuiteTime);
-  logTestStep(1, "je test description", "passed");
-  logTestStep(2, "je test description", "failed");
-  logTestStep(3, "je test description", "blocked");
-  logTestStep(4, "je test description", "skipped");
-
-  const testResults = {
-    passed: 3,
-    failed: 2,
-    skipped: 1,
-  };
-
-  generateTestReport(testResults);
-  debugVariable("jeVariable", "jeString");
-  compareExpectedActual("43", 43);
-  logSystemInfo("jeTest", 101);
+  debugVariable("jeVariable", testUserEmail);
+  compareExpectedActual("SecurePassword123", testUserPassword);
+  logSystemInfo(testUserEmail, testUserPassword);
 }
 
 function simulateLoginTest() {
+  console.log("===== SIMMULATING LOGIN TEST =====");
+
   let demoSuiteName = "Login Test Suite";
   let startDemoSuiteTime = startTestSuite(demoSuiteName);
-  startTestSuite(demoSuiteName);
 
-  let newEmail = generateUniqueEmail("jeLoginDemo");
-  validateEmail(newEmail);
+  let demoEmail = generateUniqueEmail("jeLoginDemo");
+  let isEmailValid = validateEmail(demoEmail);
 
   logTestStep(1, "Go to Login page", "passed");
-  logTestStep(2, "Populate valid credentials", "passed");
+  logTestStep(
+    2,
+    "Populate valid credentials",
+    isEmailValid ? "passed" : "failed"
+  );
   logTestStep(3, "Click on Show password icon", "skipped");
   logTestStep(4, "Select Remember me chekcbox", "failed");
   logTestStep(5, "Click on Login button", "passed");
 
-  endTestSuite(demoSuiteName, startDemoSuiteTime);
+  let duration = endTestSuite(demoSuiteName, startDemoSuiteTime);
 
-  const testDemoResults = {
+  let testDemoResults = {
     passed: 3,
-    failed: 1,
+    failed: isEmailValid ? 0 : 1,
     skipped: 1,
   };
 
-  generateTestReport(testDemoResults);
+  generateTestReport(testDemoResults, duration);
 }
 
 runFoundationDemo();
+simulateLoginTest();

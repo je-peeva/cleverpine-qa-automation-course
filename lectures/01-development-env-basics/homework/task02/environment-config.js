@@ -1,3 +1,5 @@
+export { loadEnvironmentConfig, defaultEnvironemntConfig };
+
 const defaultEnvironemntConfig = {
   baseUrl: "https://demo-qa-site.com/development",
   timeout: 15000,
