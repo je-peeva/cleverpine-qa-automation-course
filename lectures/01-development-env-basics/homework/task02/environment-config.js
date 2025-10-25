@@ -1,6 +1,6 @@
-export { loadEnvironmentConfig, defaultEnvironemntConfig };
+export { loadEnvironmentConfig, defaultEnvironmentConfig };
 
-const defaultEnvironemntConfig = {
+const defaultEnvironmentConfig = {
   baseUrl: "https://demo-qa-site.com/development",
   timeout: 15000,
   debugMode: true,
@@ -8,10 +8,10 @@ const defaultEnvironemntConfig = {
 
 //Print the default environment variables
 function loadEnvironmentConfig() {
-  console.log("===== DEFAULT CONFIGURATION =====");
-  console.log(defaultEnvironemntConfig);
+  console.log("===== DEFAULT ENVIRONMENT CONFIGURATION =====");
+  console.log(defaultEnvironmentConfig);
 
-  return defaultEnvironemntConfig;
+  return defaultEnvironmentConfig;
 }
 
 loadEnvironmentConfig();
