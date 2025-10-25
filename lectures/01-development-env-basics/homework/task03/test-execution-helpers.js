@@ -12,7 +12,7 @@ let startTime = null;
 
 //Print suite name and print and return start time of the suite
 function startTestSuite(suiteName) {
-  console.log(`===== START TEST SUITE: ${suiteName} =====`);
+  console.log(`===== STARTING TEST SUITE: ${suiteName} =====`);
 
   startTime = new Date().toISOString();
   console.log(`Start time: ${startTime}`);
@@ -24,6 +24,10 @@ function startTestSuite(suiteName) {
 function endTestSuite(suiteName, startTime) {
   let currentTime = new Date();
   let suiteDurration = currentTime - new Date(startTime);
+
+  // const endTime = new Date();
+  // const startTimeDate = new Date(startTime);
+  // const duration = endTime.getTime() - startTimeDate.getTime();
 
   console.log(`===== Duration of ${suiteName} is: ${suiteDurration} ms =====`);
   return suiteDurration;
