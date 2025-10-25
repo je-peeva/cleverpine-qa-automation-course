@@ -10,7 +10,7 @@ function checkNodeVersion() {
 //Print and return used npm version
 // npm -v is working fine, but in this function it is displayed as Not available/undefined?
 function checkNpmVersion() {
-  let npmVersion = process.env.npmVersion || "Not available";
+  let npmVersion = process.env.npm_version || "Not available";
   console.log("NPM version is " + npmVersion);
   return npmVersion;
 }
