@@ -10,30 +10,42 @@ This document provides step-by-step instructions to set up a QA automation envir
 
 ## 2. Instalation Verification
 
-Once instalation is completed run the provided script below to verify the used version of Node.js, NPM, Operating system and current working directory:
+Once instalation is completed run the provided script below to verify the used version of Node.js, NPM, Operating system and current working directory.
+
+1.  Open your terminal or command prompt.
+2.  Navigate to the root directory of your `cleverpine-qa-automation-course` project.
+3.  Run the verification script with the following command:
 
 ```bash
-node H:\Documents\Skillo\cleverpine-qa-automation-course\lectures\01-development-env-basics\homework\task01\verify-setup.js
+node lectures/01-development-env-basics/homework/task01/verify-setup.js
 ```
 
 ## 3. Troubleshooting
 
-- Node.js is not recognized:
-  - Ensure Node.js is added to your system PATH.
-  - Reinstall Node.js if needed.
-- NPM version is "Not available":
-  - Reinstall Node.js, becasue NPM is bundles with Node.js.
-- Function not defined:
-  - Check function names match exactly (case-sensetive).
-- Script won't run:
-  - Verify you're in the correct directory and file exists.
-- Package.json issues:
-  - Re-run npm init -y if needed.
+Here are some common problems and their solutions:
+
+- **Cause:** Node.js is not recognized:
+  - **Solution 1:** Ensure Node.js is added to your system PATH.
+  - **Solution 2:** Reinstall Node.js if needed.
+
+- **Cause:** NPM version is "Not available":
+  - **Solution** Reinstall Node.js, becasue NPM is bundles with Node.js.
+
+- **Cause:** Function not defined:
+  - **Solution:** Check function names match exactly (case-sensetive).
+
+- **Cause:** Script won't run:
+  - **Solution:** Verify you're in the correct directory and file exists.
+
+- **Cause:** Package.json issues:
+  - **Solution:** Re-run npm init -y if needed.
 
 ## 4. Project Structure
 
+Here is an overview of the main folders in this project:
+
 ```plaintext
-.vscode/
+.vscode/                            # Contains VS Code workspace settings
 ├── extensions.json                 # Recommended extensions for the project
 └── settings.json                   # Formatting and editor configuration
 
@@ -46,4 +58,5 @@ lectures/
 └── .gitignore                      # Untracked files/folders
 └── eslint.config.mjs               # ESLint configuration
 └── package.json                    # Project metadata and dev tooling
+└── package-lock.json               # Records the exact version of every installed dependency,
 ```
