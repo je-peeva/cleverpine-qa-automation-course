@@ -64,7 +64,8 @@ function simulateLoginTest() {
     skipped: 1,
   };
 
-  generateTestReport(testDemoResults, duration);
+  generateTestReport(testDemoResults);
+  console.log(`Test duite ${demoSuiteName} completed in ${duration}ms.`);
 }
 
 runFoundationDemo();
