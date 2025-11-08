@@ -1,53 +1,31 @@
-/**
- * This script verifies the user's development environment by checking Node.js and NPM versions,
- * and displays other relevant system information.
- */
+export { displayEnvironmentInfo };
 
-/**
- * Checks and displays the installed Node.js version.
- * @returns {string} The Node.js version.
- */
+//Print and return used node.js version
 function checkNodeVersion() {
-  const nodeVersion = process.version;
-  console.log("Node.js version:", nodeVersion);
+  let nodeVersion = process.version;
+  console.log("Node.js version is " + nodeVersion);
   return nodeVersion;
 }
 
-/**
- * Checks and displays the installed NPM version.
- * Note: This function relies on an environment variable that is typically set when running scripts via npm.
- * If you run this script directly with `node verify-setup.js`, the NPM version may show as 'Not available'.
- * @returns {string} The NPM version or 'Not available'.
- */
+//Print and return used npm version
+// npm -v is working fine, but in this function it is displayed as Not available/undefined?
 function checkNpmVersion() {
-  const npmVersion = process.env.npm_version || 'Not available';
-  console.log("NPM version:", npmVersion);
+  let npmVersion = process.env.npm_version || "Not available";
+  console.log("NPM version is " + npmVersion);
   return npmVersion;
 }
 
-/**
- * Displays a summary of the development environment information.
- * It calls other functions to get specific details like Node and NPM versions,
- * and also gathers OS and current path information.
- */
+//Display node.js and npm versions
 function displayEnvironmentInfo() {
-  console.log("--- Environment Verification ---");
-  
   checkNodeVersion();
   checkNpmVersion();
-  
-  const platform = process.platform;
-  console.log("Operating System:", platform);
-  
-  const currentDirectory = process.cwd();
-  console.log("Current working directory:", currentDirectory);
-  
-  console.log("------------------------------");
+
+  let operationSystem = process.platform;
+  let currentDirectory = process.cwd();
+  console.log(
+    `Operating system is ${operationSystem}.
+Current working directory is ${currentDirectory}.`
+  );
 }
 
-// Execute the main function to display environment information.
-// displayEnvironmentInfo();
-
-export {
-  displayEnvironmentInfo,
-};
+displayEnvironmentInfo();
