@@ -1,101 +1,108 @@
-export {
-  testUserEmail,
-  testUserPassword,
-  validateEmail,
-  validatePassword,
-  generateUniqueEmail,
-  logTestConfiguration,
-};
+/**
+ * This file contains the test data configuration for the QA automation course.
+ * It includes constants, test user credentials, and feature flags.
+ */
 
+// --- Constants ---
+
+// The base URL for the demo application.
 const BASE_URL = "https://demo-qa-site.com";
+
+// The default timeout for waiting for elements, in milliseconds.
 const DEFAULT_TIMEOUT = 30000;
+
+// A collection of API endpoints for the application.
 const API_ENDPOINTS = {
-  login: "api/login",
-  users: "api/users",
-  products: "api/products",
+  login: "/api/login",
+  users: "/api/users",
+  products: "/api/products",
 };
 
+// --- Test User Data ---
+
+// Using `let` for user credentials that might be reassigned in different test scenarios.
 let testUserEmail = "test.user@example.com";
-let testUserPassword = "SecurePassword123";
-let adminUserEmail = "admin@example.com";
+let testUserPassword = "aVerySecurePassword123";
+let adminUserEmail = "admin.user@example.com";
+
+// Expected text content for assertions.
 let expectedWelcomeMessage = "Welcome to your dashboard";
 
+// --- Feature Flags ---
+
+// Boolean flags to control test execution behavior.
 let debugMode = true;
 let runSlowTests = false;
 let useTestData = true;
 
-//Validate if email contains @ and . Print the result and return bool statement
+// --- Data Validation Functions ---
+
+/**
+ * Validates if an email address contains the '@' and '.' characters.
+ * @param {string} email - The email address to validate.
+ * @returns {boolean} - True if the email is valid, otherwise false.
+ */
 function validateEmail(email) {
-  let isValidEmail = email.includes("@") && email.includes(".");
-
-  console.log(
-    `Validation for email "${email}": ${isValidEmail ? "Pass" : "Fail"}`
-  );
-
-  console.log(
-    isValidEmail
-      ? `User email ${email} is valid.`
-      : `User email ${email} is invalid.`
-  );
-
-  return isValidEmail;
+  const isValid = email.includes("@") && email.includes(".");
+  console.log(`Validation for email "${email}": ${isValid ? "Pass" : "Fail"}`);
+  return isValid;
 }
 
-// validateEmail(testUserEmail);
-// validateEmail("je.");
-
-//Validate if password length is 8 symbols, print the result and return bool statement
+/**
+ * Validates if a password meets the minimum length requirement.
+ * @param {string} password - The password to validate.
+ * @returns {boolean} - True if the password is 8 or more characters long, otherwise false.
+ */
 function validatePassword(password) {
-  let isPassLengthValid = password.length >= 8;
-
-  console.log(`Password length check: ${isPassLengthValid ? "Pass" : "Fail"}`);
-
-  console.log(
-    isPassLengthValid
-      ? "Password length meets the requirements."
-      : "Password length doesn't meet the requirements."
-  );
-
-  return isPassLengthValid;
+  const isValid = password.length >= 8;
+  console.log(`Password length check: ${isValid ? "Pass" : "Fail"}`);
+  return isValid;
 }
 
-// validatePassword(testUserPassword);
-// validatePassword("smth");
-
-//Generate new email, print and return the result
+/**
+ * Generates a unique email address by appending a timestamp.
+ * @param {string} baseName - The base name for the email (e.g., 'testuser').
+ * @returns {string} - A unique email address.
+ */
 function generateUniqueEmail(baseName) {
-  let currentTimestamp = Date.now();
-  let newEmail = baseName + currentTimestamp + "@testmail.com";
-
-  console.log("Newly generated email is:", newEmail);
-
-  return newEmail;
+  const timestamp = Date.now();
+  const uniqueEmail = `${baseName}+${timestamp}@testmail.com`;
+  console.log(`Generated unique email: ${uniqueEmail}`);
+  return uniqueEmail;
 }
 
-//generateUniqueEmail("je");
+// --- Configuration Logging ---
 
-//Print all consts, variables, their values and current timestamp
+/**
+ * Logs all current test data constants and variables to the console.
+ */
 function logTestConfiguration() {
-  // toLocaleString() -> 10/23/2025, 8:38:50 AM
-  let currentDatestamp = new Date().toLocaleString();
-  //let currentDatestamp = new Date().toISOString(); -> 2025-10-23T05:38:50.986Z
-
-  console.log("===== TEST CONFIGURATION =====");
-  console.log("Current Time Of Configuration", currentDatestamp);
-  console.table({
-    "Base URL": BASE_URL,
-    "Default Timeout": DEFAULT_TIMEOUT,
-    "Login URL": API_ENDPOINTS.login,
-    "Users URL": API_ENDPOINTS.users,
-    "Products URL": API_ENDPOINTS.products,
-    "Test User Email": testUserEmail,
-    "Test User Password": testUserPassword,
-    "Admin User Email": adminUserEmail,
-    "Expected Welcome Message": expectedWelcomeMessage,
-    "Debug Mode Enabled": debugMode,
-    "Run Slow Tests": runSlowTests,
-    "Use Test Data": useTestData,
-  });
+  console.log("--- Current Test Configuration ---");
+  console.log(`Timestamp: ${new Date().toISOString()}`);
+  console.log(`Base URL: ${BASE_URL}`);
+  console.log(`Default Timeout: ${DEFAULT_TIMEOUT}`);
+  console.log(`Test User Email: ${testUserEmail}`);
+  console.log(`Debug Mode: ${debugMode}`);
+  console.log("---------------------------------");
 }
 
-//logTestConfiguration();
+// --- Demo/Test Calls ---
+/*
+logTestConfiguration();
+validateEmail(testUserEmail); // valid
+validateEmail(adminUserEmail); // valid admin email
+validateEmail("invalidemail"); // invalid
+validatePassword(testUserPassword); // valid
+validatePassword("short"); // invalid
+generateUniqueEmail("testuser");
+console.log(`Admin User Email: ${adminUserEmail}`);
+console.log(`Expected Welcome Message: ${expectedWelcomeMessage}`);
+console.log(`Run Slow Tests: ${runSlowTests}`);
+console.log(`Use Test Data: ${useTestData}`);
+console.log('API Endpoints:', API_ENDPOINTS);
+*/
+
+export {
+    validateEmail,
+    generateUniqueEmail,
+};

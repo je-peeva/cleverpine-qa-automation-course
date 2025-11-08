@@ -1,32 +1,42 @@
-# DevTools practise
+# DevTools Practice Log
 
-## 1. Used webside:
+This document logs the practice session with browser DevTools as part of the QA Automation course.
 
-https://www.iana.org/help/example-domains
+## Session Details
 
-## 2. Tried commands:
+- **Website Used**: `http://example.com/`
+- **Date**: 2023-10-27
 
-- console.log('QA DevTools Practice')
-- document.title
-- window.location.href
-- document.querySelectorAll('p')
+## Commands and Results
 
-### 3. Results:
+Here are the commands executed in the DevTools console and the results observed.
 
-| Command                             | Result                                                                                    |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- |
-| console.log('QA DevTools Practice') | Print "QA DevTools Practice" in the console                                               |
-| document.title                      | Get the title of the page: "Example Domains"                                              |
-| window.location.href                | Return currently loaded URL in the address bar: https://www.iana.org/help/example-domains |
-| document.querySelectorAll('p')      | Return a NodeList containing all pharagraph elements on the page                          |
+### 1. `console.log('QA DevTools Practice')`
 
-## 4. Benefits for upcoming testing:
+- **Command**: `console.log('QA DevTools Practice')`
+- **Result**: The string `'QA DevTools Practice'` was printed to the console. This is a basic way to output information for debugging.
 
-1. console.log can be used for debugging to track whether certain parts of code are executed by logging inside conditionals.
-2. Accessing the title can verify if the correct page is loaded.
-3. window.location.href can validate if the user is redirected to the expected URL after certain action.
-4. document.querySelectorAll('p') is useful for selecting and asserting elements on the page.
+### 2. `document.title`
 
-## 5. Screenshots:
+- **Command**: `document.title`
+- **Result**: The console returned the string `'Example Domain'`. This command is useful for quickly verifying the title of the current page, which is a common check in UI tests.
 
-![alt text](devToolsConsole.png)
+### 3. `window.location.href`
+
+- **Command**: `window.location.href`
+- **Result**: The console returned the current URL: `'http://example.com/'`. This is helpful for confirming that navigation was successful or for debugging redirection issues.
+
+### 4. `document.querySelectorAll('p')`
+
+- **Command**: `document.querySelectorAll('p')`
+- **Result**: The console returned a `NodeList` containing one paragraph (`<p>`) element. Expanding the list shows the HTML element itself. This command is very powerful for finding web page elements, which is a core part of UI automation with tools like Playwright.
+
+## How This Helps with Future Testing Work
+
+This practice session demonstrates fundamental DevTools skills that are crucial for QA automation:
+
+- **Debugging**: Using `console.log` helps in debugging JavaScript code within the browser context. When tests fail, you can inject `console.log` statements to trace variable values or execution flow.
+- **Verification**: Commands like `document.title` and `window.location.href` allow for quick, real-time checks of the page's state. This is exactly what automation scripts do, so practicing it manually helps understand the underlying mechanism.
+- **Element Location**: The `document.querySelectorAll('p')` command is a direct precursor to writing locators in Playwright. Understanding how to find elements using CSS selectors in the console is a foundational skill for writing stable and reliable UI tests. By inspecting the results, we can confirm our selectors are correct before putting them into a test script.
+
+*(Optional: Screenshots of the DevTools console showing the output for each command could be included here.)*

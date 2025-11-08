@@ -1,7 +1,7 @@
 {
-  "name": "qa-automation-course",
+  "name": "js-playwright-course",
   "version": "1.0.0",
-  "description": "A learning repository for the QA Automation course, featuring examples and homework tasks that apply fundamental JavaScript concepts and core testing workflows.",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,17 +13,8 @@
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.6.1",
     "eslint": "^9.34.0",
     "globals": "^16.3.0",
     "prettier": "^3.6.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/je-peeva/cleverpine-qa-automation-course.git"
-  },
-  "bugs": {
-    "url": "https://github.com/je-peeva/cleverpine-qa-automation-course/issues"
-  },
-  "homepage": "https://github.com/je-peeva/cleverpine-qa-automation-course#readme"
+  }
 }

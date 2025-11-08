@@ -1,6 +1,6 @@
 // Root Playwright configuration for the course repo (ESM)
-// Scopes tests to the Lecture 09 folder so other lectures are unaffected.
 import { defineConfig } from "@playwright/test";
+
 export default defineConfig({
   testDir: "lectures/",
   timeout: 30_000,
@@ -12,8 +12,8 @@ export default defineConfig({
   reporter: [["html"]],
   // Enable additional browsers later if desired
   // projects: [
-  // { name: "chromium", use: { browserName: "chromium" } },
-  // { name: "firefox", use: { browserName: "firefox" } },
-  // { name: "webkit", use: { browserName: "webkit" } },
+  //   { name: "chromium", use: { browserName: "chromium" } },
+  //   { name: "firefox", use: { browserName: "firefox" } },
+  //   { name: "webkit", use: { browserName: "webkit" } },
   // ],
 });
